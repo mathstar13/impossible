@@ -1,21 +1,13 @@
-def encode(txt,key=False,ek="",ssc='0123456789,abcdefghijklmnopqrstuvwxyz.',uus=False):
+def encode(txt,key=False,ek=""):
+    ssc = "01234567890abcdefghijklmnopqrstuvwxyz,"
     from random import sample,choice
     nt = ""
     lc = 'l'
     for char in txt:
         nt += hex(ord(char))+","
     txt = nt[::-1].replace(",","",1)[::-1]
+    sp = ','
     if ek == "":
-        if "␟" in txt or "␟" in ssc or not uus:
-            while True:
-                sp = choice(ssc)
-                if not sp in txt:
-                    ssc = list(ssc)
-                    del ssc[ssc.index(sp)]
-                    ssc = ''.join(ssc)
-                    break
-        else:
-            sp = "␟"
         s = ""
         sc = ''.join(sample(ssc,len(ssc)))
         c = ''.join(sample(sc,len(sc)))
@@ -67,7 +59,7 @@ def encodeShort(txt,key=False,ek="",ssc=' !"#$%&\'()*,-./0123456+789:;<=>?@ABCDE
         return [s,c+sp+sc+sp]
     else:
         return s+sp+c+sp+sc+lc+sp
-ssc=' !"#$%&\'()*,-./0123456+789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþ'
+sssc=' !"#$%&\'()*,-./0123456+789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþ'
 def decode(txt,key=''):
     long = False
     if txt[::-1][1] == "l":
@@ -100,24 +92,24 @@ def decode(txt,key=''):
         return r
     else:
         return txt
-def generate_key(sp="+",ssc='0123456789,abcdefghijklmnopqrstuvwxyz'):
+def generate_key():
+    from random import sample
+    sp = "."
+    ssc = "0123456789abcdefghijklmnopqrstuvwxyz,"
+    sc = ''.join(sample(ssc,len(ssc)))
+    c = ''.join(sample(sc,len(sc)))
+    return c+sp+sc+sp
+def generate_key_short(sp="␟",ssc=' !"#$%&\'()*,-./0123456+789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþ'):
     from random import sample
     sc = ''.join(sample(ssc,len(ssc)))
     c = ''.join(sample(sc,len(sc)))
     if sp in c:
         raise SyntaxError("Value of SP cannot be in SSC.")
     return c+sp+sc+sp
-def generate_key_shortOpts(sp="␟",ssc=' !"#$%&\'()*,-./0123456+789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþ'):
-    from random import sample
-    sc = ''.join(sample(ssc,len(ssc)))
-    c = ''.join(sample(sc,len(sc)))
-    if sp in c:
-        raise SyntaxError("Value of SP cannot be in SSC.")
-    return c+sp+sc+sp
-k = generate_key_shortOpts()
-d = encodeShort("ASDF",ek=k)
-print(d)
-print(decode(d))
+k = "1cfyljmbd6trpsi4aog378huqve2z9,0nx5kw.32ad,67piwn0toqs8xvb915ulhrcjg4yefzmk."
+print(k)
+print(encode("ASDF",ek=k,key=True))
+print(decode(encode("ASDF",ek=k)))
 '''s = ""
 for char in "ASDF":
     s += hex(ord(char))+","
