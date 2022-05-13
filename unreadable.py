@@ -106,18 +106,3 @@ def generate_key_short(sp="␟",ssc=' !"#$%&\'()*,-./0123456+789:;<=>?@ABCDEFGHI
     if sp in c:
         raise SyntaxError("Value of SP cannot be in SSC.")
     return c+sp+sc+sp
-k = "1cfyljmbd6trpsi4aog378huqve2z9,0nx5kw.32ad,67piwn0toqs8xvb915ulhrcjg4yefzmk."
-print(k)
-print(encode("ASDF",ek=k,key=True))
-print(decode(encode("ASDF",ek=k)))
-'''s = ""
-for char in "ASDF":
-    s += hex(ord(char))+","
-s = s[::-1].replace(",","",1)[::-1]
-e = encode(s)
-v = decode(e)
-o = ""
-for item in v.split(","):
-    o += chr(int(item,16))
-print(o)
-#print(decode(d,key=k))'''
