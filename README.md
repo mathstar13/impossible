@@ -25,3 +25,4 @@ impossible.encode("test",key=True)
 impossible.encode("test",ek="4wyx6i0fz3nkms1elurgtjb2d7oqc9vpa8h5,.tpmocnes5y,kardh17glx6qvibf4j308w9u2z.")
 # -> vtuqnvtjznvtu9nvtuq.4wyx6i0fz3nkms1elurgtjb2d7oqc9vpa8h5,.tpmocnes5y,kardh17glx6qvibf4j308w9u2zl.
 ```
+### impossible.encodeShort(txt,key=False,ek="",ssc=' !"#$%&\'()*,-./0123456+789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_\`abcdefghijklmnopqrstuvwxyz{|}~®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþ',uus=True)
