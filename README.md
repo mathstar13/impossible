@@ -26,6 +26,6 @@ Then, you can encode and decode using that key.
 import impossible
 encoded_value = impossible.encode("Hello World",ek="9,ogwje68zm5kcsbxl0yrf4d2731qauptinhv.m8hzqsbvx,lketd4ca0wgpjyu691ir725onf3.",key=True)[0]
 print(encoded_value)
-decoded_value = decode(encoded_value,ek="9,ogwje68zm5kcsbxl0yrf4d2731qauptinhv.m8hzqsbvx,lketd4ca0wgpjyu691ir725onf3.")
+decoded_value = decode(encoded_value,key="9,ogwje68zm5kcsbxl0yrf4d2731qauptinhv.m8hzqsbvx,lketd4ca0wgpjyu691ir725onf3.")
 print(decoded_value)
 ```
